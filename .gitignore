@@ -3,4 +3,4 @@
 *.pyo
 .env
 .DS_Store
-insight_cache.sqlite
+*.sqlite
