@@ -1,0 +1,17 @@
+services:
+  - name: web
+    env: python
+    buildCommand: docker build -t web .
+    startCommand: docker run -p 8000:8000 web
+    envVars:
+      - key: ENV
+        value: development
+      - key: REDIS_HOST
+        value: redis
+      - key: REDIS_PORT
+        value: "6379"
+    sourceDir: /
+    dockerfilePath: Dockerfile
+
+  - name: redis
+    image: redis:latest
