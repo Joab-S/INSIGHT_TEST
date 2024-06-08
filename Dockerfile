@@ -1,5 +1,8 @@
 FROM python:3.10
 
+# Instalação do servidor Redis
+RUN apt-get update && apt-get install -y redis-server
+
 WORKDIR /app
 
 COPY requirements.txt .
