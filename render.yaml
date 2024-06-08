@@ -2,7 +2,7 @@ services:
   - name: web
     env: python
     buildCommand: docker build -t web .
-    startCommand: docker run -p 8000:8000 web
+    startCommand: docker run -p 8000:8000 --env-file .env web
     envVars:
       - key: ENV
         value: development
@@ -15,3 +15,4 @@ services:
 
   - name: redis
     image: redis:latest
+    startCommand: docker run -p 6379:6379 redis:latest
