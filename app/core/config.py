@@ -16,3 +16,10 @@ try:
     print("Conexão com o Redis estabelecida com sucesso!")
 except redis.exceptions.ConnectionError as e:
     print(f"Erro ao conectar ao Redis: {e}")
+
+def clear_redis_cache():
+    try:
+        redis_client.flushall()
+        print("Redis cache cleared successfully.")
+    except Exception as e:
+        print(f"Error clearing Redis cache: {e}")
