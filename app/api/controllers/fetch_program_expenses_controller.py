@@ -2,7 +2,7 @@ import json
 from datetime import date
 from concurrent.futures import ThreadPoolExecutor
 from app.core.config import redis_client, expiration_time
-from app.services.tce_service import fetch_details_county_tce, fetch_program_expenses_tce
+from app.services.tce_service import fetch_details_county_tce, fetch_program_expenses_tce, fetch_function_tce
 
 def fetch_program_expenses(codibge, codprogram, year=None):
     details_county_data = fetch_details_county_tce(codibge)["data"][0]
@@ -39,6 +39,8 @@ def fetch_program_expenses(codibge, codprogram, year=None):
     filtered_expenses = [expense for expense in program_expenses if expense.get("codigo_programa") == str(codprogram)]
 
     for expense in filtered_expenses:
+        expense["funcao"] = fetch_function_tce(expense.get("codigo_funcao"))[0]
+        
         codigo_pa = expense.get("codigo_projeto_atividade")
         if codigo_pa in ["1", "3", "5", "7"]:
             expense["codigo_projeto_atividade"] = "Projetos"

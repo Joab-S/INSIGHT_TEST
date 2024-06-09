@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Query
 from app.api.models.program_expense import ProgramExpense
+from app.api.models.function import Function
 from app.api.controllers.fetch_program_expenses_controller import fetch_program_expenses
 import requests
 from typing import List
@@ -20,9 +21,12 @@ def get_program_expenses(codeibge: int, codprogram: str, year: int = Query(None,
             exercise_budget = d["exercicio_orcamento"],
             org_code = d["codigo_orgao"],
             unit_code = d["codigo_unidade"],
-            function_code = d["codigo_funcao"],
+            function = Function (
+                function_code = d["funcao"]["codigo_funcao"],
+                function_name = d["funcao"]["nome_funcao"]
+            ),
             subfunction_code = d["codigo_subfuncao"],
-            code_project_activity = d["codigo_projeto_atividade"],
+            project_of_activity = d["codigo_projeto_atividade"],
             activity_project_number = d["numero_projeto_atividade"],
             number_subproject_activity = d["numero_subprojeto_atividade"],
             code_type_budget = d["codigo_tipo_orcamento"],
