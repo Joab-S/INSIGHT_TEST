@@ -39,3 +39,16 @@ def fetch_program_expenses_tce(tcecode, date):
         return response.json()["data"]
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar informações das desepesas do programa: {e}")
+    
+
+def fetch_organs_tce(tcecode, date, organcode):
+    url = f"https://api-dados-abertos.tce.ce.gov.br/orgaos?codigo_municipio={tcecode}&exercicio_orcamento={date}"
+    if (organcode):
+        url += f"&codigo_orgao={organcode}"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()["data"]
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Erro ao buscar informações das desepesas do programa: {e}")

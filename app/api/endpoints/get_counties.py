@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from app.api.models.basic_county import BasicCounty
 from app.services.ibge_service import fetch_ceara_counties
-from app.utils.helpers import county_response_format
 from typing import List
 
 counties_router = APIRouter()
