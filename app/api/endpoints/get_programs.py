@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Query
 from app.api.models.program import Program
-from app.services.tce_service import fetch_government_programs
+from app.api.controllers.fetch_government_programs_controller import fetch_government_programs
 import requests
 from typing import List
 

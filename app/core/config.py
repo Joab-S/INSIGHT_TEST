@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-redis_host = os.getenv("REDIS_HOST", "localhost")
+redis_host = os.getenv("REDIS_HOST")
 redis_port = int(os.getenv("REDIS_PORT", 6379))
 expiration_time = int(os.getenv("EXPIRATION_TIME", 604800))
 

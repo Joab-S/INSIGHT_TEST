@@ -1,5 +1,5 @@
 from app.services.ibge_service import county_mesh_metadata
-from app.services.siconfi_service import fetch_ceara_counties_population_by_codibge
+from app.api.controllers.fetch_ceara_counties_population_siconfi_controller import fetch_ceara_counties_population_by_codibge
 
 def county_response_format(county_id):
     metadata = county_mesh_metadata(county_id)
