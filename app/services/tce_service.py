@@ -12,7 +12,7 @@ def fetch_details_county_tce(codibge):
     else:
         url = f"https://api-dados-abertos.tce.ce.gov.br/municipios?geoibgeId={codibge}"
         try:
-            response = requests.get(url)
+            response = requests.get(url, verify=False)
             response.raise_for_status()
             details = response.json()
             redis_client.setex(cache_key, expiration_time, json.dumps(details))
