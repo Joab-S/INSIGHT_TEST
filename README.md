@@ -59,7 +59,7 @@ docker-compose down
 
 ### 6. Acessar a aplicação
 
-A aplicação estará disponível em `http://localhost:8000`.
+A aplicação estará disponível em `https://infosync-municipios.onrender.com/`.
 
 Nota: Essa rota, por sí só, apenas retorna uma lista de municípios, conforme a documentação (abaixo). Desse modo, sugiro abrir o link da documentação e ver as rotas da API por lá. 
 
